@@ -3,7 +3,7 @@ title: "Capitulo 1: Introduccion a Estadistica en R"
 subtitle: "Resumen de lecciones aprendidas de curso de Datacamp"
 author: "Joshua Suasnabar Huapaya - jsuasnabarh@gmail.com - [Linkedin](https://www.linkedin.com/in/jsuasnabarh/)"
 date: "20 de Enero del 2022"
-output: html_document
+output: html_notebook
 ---
 El presente notebook es una recopilacion de informacion del capitulo 1 del curso de Introduccion a la estadistica con R donde se explicara un resumen de lo aprendido para la comunidad R en espaniol.
 
