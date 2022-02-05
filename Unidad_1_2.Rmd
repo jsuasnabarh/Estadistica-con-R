@@ -1,0 +1,82 @@
+---
+title: "Capitulo 1: Introduccion a Estadistica en R"
+subtitle: "Resumen de lecciones aprendidas de curso de Datacamp"
+author: "Joshua Suasnabar Huapaya - jsuasnabarh@gmail.com - [Linkedin](https://www.linkedin.com/in/jsuasnabarh/)"
+date: "20 de Enero del 2022"
+output: html_document
+---
+El presente notebook es una recopilacion de informacion del capitulo 1 del curso de Introduccion a la estadistica con R donde se explicara un resumen de lo aprendido para la comunidad R en espaniol.
+
+## Estadistica:
+La practica y estudio de la recoleccion y el analisis de los datos. Con la estadistica podemos responder las siguientes preguntas:
+
+- Que tan probable es que alguien compre un producto? Es probable que una persona compre si usa un meodo de pago distinto?
+- Cuantos clientes hospedados hay el dia de hoy? Como puedo optimizar la asignacion de habitaciones?
+- Cuantas tallas de Jean deben fabricarse para que le quede al 95% de la poblacion?
+- A/B Test: Que anuncio es mas efectivo para que las personas compren un producto?
+
+### Tipos de estadistica:
+- *Estadistica descriptiva:* 
+Describe y resume data. Ejemplos: 
+  - 50% de mis amigos manejan para ir a trabajar.
+  - 25% toman bus.
+  - 25% van en bicicleta.
+- *Estadistica inferencial:* 
+Usa una muestra de la poblacion para hacer inferencias sobre el universo total. Ejemplo:
+  - Que porcentaje de personas maneja para ir a trabajar?
+  
+### Tipos de datos:
+- *Numerica (Cuantitativa): *
+  - Continua (Medible): Velocidad de un auto.
+  - Discreta (Contable): Numero de mascotas.
+  
+- *Categorica:* 
+  - Nominal (Desordenada): Casado, Soltero.
+  - Ordinal (Ordenada): Primero, Segundo, Tercero.
+  
+  
+  Sobre la data categorica debemos tomar en consideracion que a veces puede ser presentada como numeros. Por ejemplo:
+  
+  - Casado (1) Soltero (0)
+
+### Por que el tipo de dato es importante?
+Porque nos ayuda a saber que tipo de resumen estadistico puedo aplicar con cada tipo de dato. A continuacion un ejemplo con el dataset TITANIC:
+
+```{r , echo=FALSE, message=FALSE}
+options(warn=-1)
+library(dplyr)
+library(ggplot2)
+
+```
+
+
+Importamos el dataset:
+
+```{r }
+data <- read.csv("datasets/titanic/train.csv")
+
+head(data)
+```
+
+
+Sabiendo que Sexo es una variable *categorica nominal* podriamos aplicar un conteo de los datos:
+
+```{r }
+data %>%
+  count(Sex)
+```
+
+
+Sabiendo que la edad es una variable con *cuantitativa discreta* podemos hacer un histograma para saber la frecuencia de pasajeros por edad, e inclusive podemos gracias a la versatilidad de la libreria ggplot tener la discretizacion por la *variable categorica nominal* sexo.
+
+```{r }
+ggplot(data,aes(x=Age,fill=Sex))+
+  geom_histogram(alpha=0.5, position="identity")+
+  theme_minimal()+
+  labs(
+    title = "Histograma de Edad por Sexo",
+    subtitle = "Sobrevivientes del Titanic",
+    x = "Edad",
+    y = "n")
+```
+
